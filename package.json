@@ -1,36 +1,22 @@
 {
-  "name": "webpack-express-boilerplate",
+  "name": "electron-react-boilerplate",
   "version": "0.1.0",
-  "description": "A boilerplate for running a Webpack workflow in Node express",
-  "main": "server.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/christianalfoni/webpack-express-boilerplate.git"
-  },
-  "keywords": [
-    "express",
-    "webpack",
-    "node"
-  ],
-  "author": "Christian Alfoni",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/christianalfoni/webpack-express-boilerplate/issues"
-  },
-  "homepage": "https://github.com/christianalfoni/webpack-express-boilerplate",
+  "description": "A boilerplate for building a React-Electron app",
+  "main": "main.js",
   "scripts": {
-    "test": "",
-    "start": "./node_modules/.bin/babel-node server",
+    "start": "electron main.js",
     "build": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors",
     "eslint": "eslint .",
     "jscs": "jscs ."
   },
+  "author": "essem",
+  "license": "MIT",
   "dependencies": {
-    "babel-cli": "^6.4.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
   },
   "devDependencies": {
+    "electron-prebuilt": "^0.36.0",
     "autoprefixer": "^6.0.3",
     "babel-core": "^6.3.26",
     "babel-eslint": "^4.1.6",
