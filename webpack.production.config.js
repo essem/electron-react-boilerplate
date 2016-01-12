@@ -14,6 +14,7 @@ module.exports = {
     path: path.join(__dirname, '/dist/'),
     filename: '[name]-[hash].min.js'
   },
+  target: 'electron',
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new HtmlWebpackPlugin({

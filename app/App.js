@@ -9,7 +9,9 @@ export default class App extends React.Component {
   render() {
     return (
       <div className={styles.app}>
-        bar
+        We are using node {process.versions.node},
+        Chrome {process.versions.chrome},
+        and Electron {process.versions.electron}.
       </div>
     );
   }

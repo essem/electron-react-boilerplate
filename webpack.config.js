@@ -15,6 +15,7 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/'
   },
+  target: 'electron',
   plugins: [
     new HtmlWebpackPlugin({
       template: 'app/index.tpl.html',
