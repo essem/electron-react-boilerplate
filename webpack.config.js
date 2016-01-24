@@ -31,11 +31,11 @@ module.exports = {
   ],
   module: {
     loaders: [{
-      test: /\.js?$/,
+      test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel'
     }, {
-      test: /\.json?$/,
+      test: /\.json$/,
       loader: 'json'
     }, {
       test: /\.css$/,
