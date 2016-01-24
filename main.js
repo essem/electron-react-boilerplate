@@ -34,7 +34,7 @@ if (isDeveloping) {
   });
 
   const port = 9865;
-  startUrl = `http://0.0.0.0:${port}`;
+  startUrl = `http://127.0.0.1:${port}`;
   app.listen(port, '0.0.0.0', function onStart(err) {
     if (err) {
       console.log(err);
@@ -61,8 +61,10 @@ function createWindow() {
   // and load the index.html of the app.
   mainWindow.loadURL(startUrl);
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  if (isDeveloping) {
+    // Open the DevTools.
+    mainWindow.webContents.openDevTools();
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
