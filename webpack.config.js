@@ -2,12 +2,13 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+var options = {
   devtool: 'eval-source-map',
   entry: [
-    'webpack-hot-middleware/client?reload=true',
+    'webpack-hot-middleware/client',
     path.join(__dirname, 'app/main.js'),
   ],
   output: {
@@ -15,7 +16,6 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/',
   },
-  target: 'electron',
   plugins: [
     new HtmlWebpackPlugin({
       template: 'app/index.tpl.html',
@@ -62,3 +62,7 @@ module.exports = {
     ],
   },
 };
+
+options.target = webpackTargetElectronRenderer(options);
+
+module.exports = options;

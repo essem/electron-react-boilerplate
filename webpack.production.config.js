@@ -2,11 +2,12 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var StatsPlugin = require('stats-webpack-plugin');
 
-module.exports = {
+var options = {
   entry: [
     path.join(__dirname, 'app/main.js'),
   ],
@@ -14,7 +15,6 @@ module.exports = {
     path: path.join(__dirname, '/dist/'),
     filename: '[name]-[hash].min.js',
   },
-  target: 'electron',
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new HtmlWebpackPlugin({
@@ -36,7 +36,7 @@ module.exports = {
       modules: false,
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
   ],
   module: {
@@ -75,3 +75,7 @@ module.exports = {
     require('autoprefixer'),
   ],
 };
+
+options.target = webpackTargetElectronRenderer(options);
+
+module.exports = options;
