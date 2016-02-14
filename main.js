@@ -1,6 +1,6 @@
 'use strict'; // eslint-disable-line strict
 
-let startUrl = `file://${__dirname}/dist/index.html`;
+let startFile = `file://${__dirname}/app/index.html`;
 const isDeveloping = process.env.NODE_ENV !== 'production';
 
 if (isDeveloping) {
@@ -28,13 +28,9 @@ if (isDeveloping) {
 
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
-  app.get('*', (req, res) => {
-    res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
-    res.end();
-  });
 
   const port = 9865;
-  startUrl = `http://127.0.0.1:${port}`;
+  const startUrl = `http://127.0.0.1:${port}`;
   app.listen(port, '0.0.0.0', err => {
     if (err) {
       console.log(err);
@@ -42,9 +38,11 @@ if (isDeveloping) {
 
     console.info('==> 🌎 Listening on port %s. Open up %s in your browser.', port, startUrl);
   });
+
+  startFile = `file://${__dirname}/app/index.dev.html`;
 }
 
-console.log(`Starting URL: ${startUrl}`);
+console.log(`Starting File: ${startFile}`);
 
 const electron = require('electron');
 
@@ -63,7 +61,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({ width: 800, height: 600 });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(startUrl);
+  mainWindow.loadURL(startFile);
 
   if (isDeveloping) {
     // Open the DevTools.

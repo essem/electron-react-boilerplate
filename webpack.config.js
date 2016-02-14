@@ -3,25 +3,19 @@
 var path = require('path');
 var webpack = require('webpack');
 var webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var options = {
   devtool: 'eval-source-map',
   entry: [
-    'webpack-hot-middleware/client',
+    'webpack-hot-middleware/client?path=http://localhost:9865/__webpack_hmr',
     path.join(__dirname, 'app/main.js'),
   ],
   output: {
     path: path.join(__dirname, '/dist/'),
-    filename: '[name].js',
-    publicPath: '/',
+    filename: 'bundle.js',
+    publicPath: 'http://localhost:9865/dist/',
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: 'app/index.tpl.html',
-      inject: 'body',
-      filename: 'index.html',
-    }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
@@ -61,6 +55,7 @@ var options = {
       },
     ],
   },
+  /* externals: { mongodb: 'commonjs mongodb' }, */
 };
 
 options.target = webpackTargetElectronRenderer(options);

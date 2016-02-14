@@ -3,7 +3,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var StatsPlugin = require('stats-webpack-plugin');
 
@@ -13,16 +12,11 @@ var options = {
   ],
   output: {
     path: path.join(__dirname, '/dist/'),
-    filename: '[name]-[hash].min.js',
+    filename: 'bundle.js',
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new HtmlWebpackPlugin({
-      template: 'app/index.tpl.html',
-      inject: 'body',
-      filename: 'index.html',
-    }),
-    new ExtractTextPlugin('[name]-[hash].min.css'),
+    new ExtractTextPlugin('style.css'),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
@@ -74,6 +68,7 @@ var options = {
   postcss: [
     require('autoprefixer'),
   ],
+  /* externals: { mongodb: 'commonjs mongodb' }, */
 };
 
 options.target = webpackTargetElectronRenderer(options);
