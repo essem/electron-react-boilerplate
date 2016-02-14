@@ -22,8 +22,8 @@ if (isDeveloping) {
       timings: true,
       chunks: false,
       chunkModules: false,
-      modules: false
-    }
+      modules: false,
+    },
   });
 
   app.use(middleware);
@@ -39,14 +39,18 @@ if (isDeveloping) {
     if (err) {
       console.log(err);
     }
+
     console.info('==> 🌎 Listening on port %s. Open up %s in your browser.', port, startUrl);
   });
 }
+
 console.log('Starting URL: ' + startUrl);
 
 const electron = require('electron');
+
 // Module to control application life.
 const app = electron.app;
+
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
@@ -56,7 +60,7 @@ let mainWindow;
 
 function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({ width: 800, height: 600 });
 
   // and load the index.html of the app.
   mainWindow.loadURL(startUrl);
