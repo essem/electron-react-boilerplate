@@ -33,10 +33,6 @@ var options = {
         test: /\.json$/,
         loader: 'json',
       }, {
-        test: /\.css$/,
-        include: path.resolve(__dirname, 'app/'),
-        loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]',
-      }, {
         test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&minetype=application/font-woff',
       }, {
@@ -50,7 +46,6 @@ var options = {
         loader: 'url?limit=10000&minetype=image/svg+xml',
       }, {
         test: /\.css$/,
-        exclude: path.resolve(__dirname, 'app/'),
         loader: 'style!css',
       },
     ],

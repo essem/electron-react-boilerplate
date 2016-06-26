@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './App.css';
 import { Panel } from 'react-bootstrap';
 
 export default class App extends React.Component {
@@ -9,8 +8,12 @@ export default class App extends React.Component {
   }
 
   render() {
+    const style = {
+      padding: '40px 20px',
+    };
+
     return (
-      <div className={styles.app}>
+      <div style={style}>
         <Panel header="Hello World!">
           We are using node {process.versions.node},
           Chrome {process.versions.chrome},
