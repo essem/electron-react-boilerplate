@@ -20,9 +20,7 @@ var options = {
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
-        /* jscs:disable requireCamelCaseOrUpperCaseIdentifiers */
         screw_ie8: true,
-        /* jscs:enable requireCamelCaseOrUpperCaseIdentifiers */
       },
     }),
     new StatsPlugin('webpack.stats.json', {

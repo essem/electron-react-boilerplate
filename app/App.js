@@ -11,11 +11,11 @@ export default class App extends React.Component {
   render() {
     return (
       <div className={styles.app}>
-      <Panel header="Hello World!">
-        We are using node {process.versions.node},
-        Chrome {process.versions.chrome},
-        and Electron {process.versions.electron}.
-      </Panel>
+        <Panel header="Hello World!">
+          We are using node {process.versions.node},
+          Chrome {process.versions.chrome},
+          and Electron {process.versions.electron}.
+        </Panel>
       </div>
     );
   }

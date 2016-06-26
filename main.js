@@ -1,10 +1,9 @@
-'use strict'; // eslint-disable-line strict
+/* eslint-disable global-require */
 
 let startFile = `file://${__dirname}/app/index.html`;
 const isDeveloping = process.env.NODE_ENV !== 'production';
 
 if (isDeveloping) {
-  const path = require('path');
   const express = require('express');
   const webpack = require('webpack');
   const webpackMiddleware = require('webpack-dev-middleware');
@@ -44,7 +43,7 @@ if (isDeveloping) {
 
 console.log(`Starting File: ${startFile}`);
 
-const electron = require('electron');
+const electron = require('electron'); // eslint-disable-line import/no-unresolved
 
 // Module to control application life.
 const app = electron.app;
